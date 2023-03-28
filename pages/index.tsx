@@ -139,7 +139,7 @@ export default function Home() {
             )}
           </Table.Body>
           <Table.Pagination
-            total={rows.length / 10}
+            total={Math.floor(rows.length / 10)}
             page={page}
             shadow
             noMargin
