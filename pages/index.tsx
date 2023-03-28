@@ -73,6 +73,7 @@ export default function Home() {
                 gap: "0.5rem",
                 alignItems: "center",
                 fontWeight: 600,
+                minHeight: "30px",
               }}
             >
               <div>
