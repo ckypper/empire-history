@@ -1,6 +1,14 @@
 import { Inter } from "@next/font/google";
-import { Spacer, Table, Textarea, Image } from "@nextui-org/react";
-import { useEffect, useMemo, useState } from "react";
+import {
+  Spacer,
+  Table,
+  Textarea,
+  Image,
+  Switch,
+  useTheme,
+} from "@nextui-org/react";
+import { useEffect, useState } from "react";
+import { useTheme as useNextTheme } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -8,6 +16,9 @@ export default function Home() {
   const [json, setJson] = useState("");
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(1);
+  const { setTheme } = useNextTheme();
+  const { isDark, type } = useTheme();
+
   const columns = [
     {
       key: "name",
@@ -97,6 +108,11 @@ export default function Home() {
       }}
     >
       <div style={{ width: "900px", fontSize: 14 }}>
+        <Switch
+          checked={isDark}
+          onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
+        />
+        <Spacer y={0.5} />
         <Textarea
           width="100%"
           placeholder="Paste your JSON here"
